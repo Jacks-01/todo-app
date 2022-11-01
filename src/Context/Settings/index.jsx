@@ -23,3 +23,5 @@ const SettingsProvider = ({ children }) => {
         </SettingsContext.Provider>
     )
 };
+
+export default SettingsProvider;

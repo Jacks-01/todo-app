@@ -21,7 +21,7 @@ export const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.dark[5],
     color: 'whitesmoke',
-    width: '60vw'
+    width: '80vw'
   },
 
   slider: {
