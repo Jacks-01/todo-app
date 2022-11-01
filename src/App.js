@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import Header from './Components/Header';
 
 import ToDo from './Components/ToDo';
 
@@ -9,8 +10,13 @@ const App = () => {
   const ThemeContext = createContext('dark'); // 2. Light/Dark Theme
   const ItemAmountContext = createContext(5); // 3. How many items per page
   const SortContext = createContext(''); // 4. Default sort string (all)
-  
-  return (<ToDo />);
-}
+
+  return (
+    <>
+      <Header />
+      <ToDo />;
+    </>
+  )
+};
 
 export default App;

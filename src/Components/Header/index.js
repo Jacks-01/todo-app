@@ -1,5 +1,9 @@
 const Header = () => {
-    return ( <h1> I'm a Header</h1> );
+    return (
+        <>
+            <header width='100vw' height='2rem' backgroundColor='blue'>Home</header>
+        </>
+    );
 }
- 
+
 export default Header;
