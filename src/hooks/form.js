@@ -10,9 +10,18 @@ const useForm = (callback, defaultValues={}) => {
   };
 
   const handleChange = (event) => {
-    event.persist();
+    let name, value;
+    if (typeof (event) === 'object') {
+      event.persist();
+      name = event.target.name;
+      value = event.target.value;
+    } else {
+      console.log('event from slider', event)
+      // hard coded for slider functionality, change "difficulty" language if desired, change it dynamically if doing stretch goal!
+      name = 'difficulty';
+      value = event;
+    }
 
-    let { name, value } = event.target;
     if (parseInt(value)) {
       value = parseInt(value);
     }
