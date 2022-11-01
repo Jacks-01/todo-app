@@ -3,9 +3,20 @@ import useForm from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
 
-import { Button } from '@mantine/core';
+import { Grid, Button, Container, createStyles } from '@mantine/core';
+
+
+export const useStyles = createStyles((theme) => ({
+  header: {
+    backgroundColor: theme.colors.dark[5],
+    color: 'whitesmoke',
+    width: '60vw'
+  }
+}));
 
 const ToDo = () => {
+
+  const { classes } = useStyles();
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -50,9 +61,11 @@ const ToDo = () => {
 
   return (
     <>
-      <header data-testid="todo-header">
-        <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
-      </header>
+      <Container className={classes.header}>
+        <header data-testid="todo-header">
+          <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
+        </header>
+      </Container>
 
       <form onSubmit={handleSubmit}>
 
