@@ -12,12 +12,12 @@ import { useForm } from '@mantine/form';
 export const useStyles = createStyles((theme) => ({
 
   container: {
-    marginTop: '3rem'
+    width: '80vw',
+    marginTop: '3rem',
   },
 
   box: {
     padding: '1rem',
-    marginTop: '2rem',
     borderStyle: 'solid',
     borderColor: theme.colors.gray[3],
     borderWidth: '1px',
@@ -25,10 +25,14 @@ export const useStyles = createStyles((theme) => ({
     maxWidth: 300,
   },
 
+  grid: {
+    width: 'auto',
+    paddingTop: '2rem',
+  },
+
   header: {
     backgroundColor: theme.colors.dark[5],
     color: 'whitesmoke',
-    width: '80vw',
     height: '3rem',
     borderRadius: theme.radius.sm,
     display: 'flex',
@@ -108,42 +112,43 @@ const ToDo = () => {
           <Text className={classes.header} data-testid="todo-h1">To Do List: {incomplete} items pending</Text>
         </header>
 
+        <Grid className={classes.grid}>
+          <Grid.Col xs={12} sm={4}>
+            <Box className={classes.box}>
+              <form onSubmit={handleSubmit}>
 
-        <Box className={classes.box}>
-          <form onSubmit={handleSubmit}>
 
+                <h2>Add To Do Item</h2>
+                <TextInput
+                  label='To Do Item:'
+                  placeholder='Item Details'
+                  {...form.getInputProps('item')}
+                >
+                </TextInput>
 
-            <h2>Add To Do Item</h2>
-            <TextInput
-              label='To Do Item:'
-              placeholder='Item Details'
-              {...form.getInputProps('item')}
-            >
-            </TextInput>
+                <TextInput
+                  label='Assigned to:'
+                  placeholder='Assignee Name'
+                  {...form.getInputProps('assignee')}>
+                </TextInput>
 
-            <TextInput
-              label='Assigned to:'
-              placeholder='Assignee Name'
-              {...form.getInputProps('assignee')}>
-            </TextInput>
+                <span>Difficulty</span>
+                <Slider
+                  className={classes.slider}
+                  min={0}
+                  max={5}
+                />
 
-            <span>Difficulty</span>
-            <Slider
-              className={classes.slider}
-              min={0}
-              max={5}
-            />
+                <Button className={classes.Button} type="submit">Add Item</Button>
 
-            <Button className={classes.Button} type="submit">Add Item</Button>
+              </form>
 
-          </form>
-
-        </Box>
-
-        <Grid>
-          <List list={list} toggleComplete={incomplete} />
+            </Box>
+          </Grid.Col>
+          <Grid.Col xs={12} sm={8}>
+            <List list={list} toggleComplete={incomplete} />
+          </Grid.Col>
         </Grid>
-
 
       </Container>
     </>

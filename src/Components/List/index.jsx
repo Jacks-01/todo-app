@@ -1,4 +1,4 @@
-import { Pagination, Grid, Card, Text } from '@mantine/core';
+import { Pagination, Card, Text } from '@mantine/core';
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
@@ -17,30 +17,29 @@ const List = ({ list, toggleComplete }) => {
 	return (
 		<>
 			{displayList.map((item) => (
-				<Grid.Col key={item.id}>
-					<Card
-						shadow='sm'
-						p='lg'
-						radius='md'
-						withBorder
-					>
-						<Card.Section>
-							<Text>Assigned to: {item.assignee}</Text>
-						</Card.Section>
-						<Card.Section>
-							<Text>{item.text}</Text>
-						</Card.Section>
+				<Card
+					key={item.id}
+					shadow='sm'
+					p='lg'
+					radius='md'
+                    withBorder
+                    sx={{}}
+				>
+					<Card.Section>
+						<Text>Assigned to: {item.assignee}</Text>
+					</Card.Section>
+					<Card.Section>
+						<Text>{item.text}</Text>
+					</Card.Section>
 
-						<Card.Section>
-							<Text>Difficulty: {item.difficulty}</Text>
-						</Card.Section>
+					<Card.Section>
+						<Text>Difficulty: {item.difficulty}</Text>
+					</Card.Section>
 
-						<small>Difficulty: {item.difficulty}</small>
-						<div onClick={() => toggleComplete(item.id)}>
-							Complete: {item.complete.toString()}
-						</div>
-					</Card>
-				</Grid.Col>
+					<div onClick={() => toggleComplete(item.id)}>
+						Complete: {item.complete.toString()}
+					</div>
+				</Card>
 			))}
 
 			<When condition={listToRender.length > 0}>
