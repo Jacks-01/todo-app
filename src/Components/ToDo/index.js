@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
+import { Button } from '@mantine/core';
 
 import { v4 as uuid } from 'uuid';
 
@@ -72,7 +73,7 @@ const ToDo = () => {
         </label>
 
         <label>
-          <button type="submit">Add Item</button>
+          <Button type="submit">Add Item</Button>
         </label>
       </form>
 
