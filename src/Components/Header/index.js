@@ -1,7 +1,10 @@
+import './header.scss'
 const Header = () => {
     return (
         <>
-            <header width='100vw' height='2rem' backgroundColor='blue'>Home</header>
+            <header id='TopNav'>
+                <h3>Home</h3>
+            </header>
         </>
     );
 }
