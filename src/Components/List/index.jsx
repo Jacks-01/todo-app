@@ -23,7 +23,6 @@ const List = ({ list, toggleComplete }) => {
 					p='lg'
 					radius='md'
                     withBorder
-                    sx={{}}
 				>
 					<Card.Section>
 						<Text>Assigned to: {item.assignee}</Text>

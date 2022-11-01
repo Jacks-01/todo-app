@@ -53,9 +53,15 @@ export const useStyles = createStyles((theme) => ({
 
 
 const ToDo = () => {
-
+  const form = useForm({
+    initialValues: {
+      item: '',
+      assignee: '',
+      slider: 0,
+    }
+  });
   const [defaultValues] = useState({
-    difficulty: 4,
+    form
   });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
@@ -95,13 +101,7 @@ const ToDo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);
 
-  const form = useForm({
-    initialValues: {
-      item: '',
-      assignee: '',
-      slider: 0,
-    }
-  });
+
 
   const { classes } = useStyles();
 
@@ -122,6 +122,7 @@ const ToDo = () => {
                 <TextInput
                   label='To Do Item:'
                   placeholder='Item Details'
+                  onChange={handleChange}
                   {...form.getInputProps('item')}
                 >
                 </TextInput>
@@ -129,6 +130,7 @@ const ToDo = () => {
                 <TextInput
                   label='Assigned to:'
                   placeholder='Assignee Name'
+                  onChange={handleChange}
                   {...form.getInputProps('assignee')}>
                 </TextInput>
 
