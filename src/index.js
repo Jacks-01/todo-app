@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import SettingsProvider from './Context/Settings/'
 
 import App from './app';
 

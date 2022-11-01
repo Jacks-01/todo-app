@@ -15,11 +15,11 @@ const SettingsProvider = ({ children }) => {
         setShowCompleted,
         setPageItems,
         setSort,
-    }
+    };
 
     return (
         <SettingsContext.Provider value={values}>
             {children}
         </SettingsContext.Provider>
     )
-}
+};
