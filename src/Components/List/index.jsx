@@ -1,4 +1,16 @@
-const List = ({list, toggleComplete}) => {
+import { useContext, useState } from "react";
+import {SettingsContext} from '../../Context/Settings/index';
+
+const List = ({ list, toggleComplete }) => {
+
+    const { pageItems, showCompleted } = useContext(SettingsContext);
+    const [page, setPage] = useState(1);
+    // pagination
+    const listToRender = showCompleted ? list : list.filter(item => !item.complete);
+    const listStart = pageItems * (page - 1)
+    const listEnd = listStart + pageItems;
+    const pageCount = Math.ceil(listToRender.length / pageItems);
+    const displayList = listToRender.slice(listStart, listEnd);
     return ( 
         list.map(item => (
             <div key={item.id}>
