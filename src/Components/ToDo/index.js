@@ -90,57 +90,57 @@ const ToDo = () => {
 
   return (
     <>
-      <Container className={classes.header}>
+      <Container className={classes.container}>
         <header data-testid="todo-header">
-          <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
+          <h1 className={classes.header} data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
         </header>
+
+
+        <Box className={classes.box}>
+          <form onSubmit={handleSubmit}>
+
+
+            <h2>Add To Do Item</h2>
+            {/* <input onChange={handleChange} name="text" type="text" placeholder="Item Details" /> */}
+            <TextInput
+              label='To Do Item:'
+              placeholder='Item Details'
+              {...form.getInputProps('item')}
+            >
+            </TextInput>
+
+
+            {/* <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" /> */}
+            <TextInput
+              label='Assigned to:'
+              placeholder='Assignee Name'
+              {...form.getInputProps('assignee')}>
+            </TextInput>
+
+            {/* <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty"/> */}
+            <span>Difficulty</span>
+            <Slider
+              className={classes.slider}
+              min={0}
+              max={5}
+            />
+
+            <Button className={classes.Button} type="submit">Add Item</Button>
+
+          </form>
+
+        </Box>
+
+        {list.map(item => (
+          <div key={item.id}>
+            <p>{item.text}</p>
+            <p><small>Assigned to: {item.assignee}</small></p>
+            <p><small>Difficulty: {item.difficulty}</small></p>
+            <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
+            <hr />
+          </div>
+        ))}
       </Container>
-
-      <Box className={classes.box}>
-        <form onSubmit={handleSubmit}>
-
-
-          <h2>Add To Do Item</h2>
-          {/* <input onChange={handleChange} name="text" type="text" placeholder="Item Details" /> */}
-          <TextInput
-            label='To Do Item:'
-            placeholder='Item Details'
-            {...form.getInputProps('item')}
-          >
-          </TextInput>
-
-
-          {/* <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" /> */}
-          <TextInput
-            label='Assigned to:'
-            placeholder='Assignee Name'
-            {...form.getInputProps('assignee')}>
-          </TextInput>
-
-          {/* <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty"/> */}
-          <span>Difficulty</span>
-          <Slider
-            className={classes.slider}
-            min={0}
-            max={5}
-          />
-
-          <Button className={classes.Button} type="submit">Add Item</Button>
-
-        </form>
-
-      </Box>
-
-      {list.map(item => (
-        <div key={item.id}>
-          <p>{item.text}</p>
-          <p><small>Assigned to: {item.assignee}</small></p>
-          <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-          <hr />
-        </div>
-      ))}
-
     </>
   )
 };

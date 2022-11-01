@@ -1,12 +1,25 @@
-import './header.scss'
-const Header = () => {
+import { Header, createStyles, Center } from '@mantine/core'
+
+export const useStyles = createStyles((theme) => ({
+
+    header: {
+        backgroundColor: theme.colors.blue[5],
+        color: theme.colors.gray[0],
+        height: '4rem',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '2em',
+
+    }
+}))
+
+const AppHeader = () => {
+    const { classes } = useStyles();
     return (
         <>
-            <header id='TopNav'>
-                <h3>Home</h3>
-            </header>
+            <Header className={classes.header}>Home</Header>
         </>
     );
 }
 
-export default Header;
+export default AppHeader;
