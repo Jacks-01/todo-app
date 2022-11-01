@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFormHook = (callback, defaultValues={}) => {
+const useForm = (callback, defaultValues={}) => {
 
   const [values, setValues] = useState({});
 
@@ -11,7 +11,7 @@ const useFormHook = (callback, defaultValues={}) => {
 
   const handleChange = (event) => {
     let name, value;
-    if(typeof(event) === 'object'){
+    if (typeof (event) === 'object') {
       event.persist();
       name = event.target.name;
       value = event.target.value;
@@ -40,4 +40,4 @@ const useFormHook = (callback, defaultValues={}) => {
   };
 };
 
-export default useFormHook;
+export default useForm;

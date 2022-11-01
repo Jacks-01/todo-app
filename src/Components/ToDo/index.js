@@ -1,13 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
-import useFormHook from '../../hooks/form';
+import useForm from '../../hooks/form';
 import List from '../List/index';
-import { SettingsContext } from '../../Context/Settings';
 
 import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
-import { useForm } from '@mantine/form';
-
 
 export const useStyles = createStyles((theme) => ({
 
@@ -53,19 +50,13 @@ export const useStyles = createStyles((theme) => ({
 
 
 const ToDo = () => {
-  const form = useForm({
-    initialValues: {
-      item: '',
-      assignee: '',
-      slider: 0,
-    }
-  });
+
   const [defaultValues] = useState({
-    form
+    difficulty: 4
   });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
-  const { handleChange, handleSubmit } = useFormHook(addItem, defaultValues);
+  const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
     item.id = uuid();
@@ -120,22 +111,25 @@ const ToDo = () => {
 
                 <h2>Add To Do Item</h2>
                 <TextInput
+                  name='text'
                   label='To Do Item:'
                   placeholder='Item Details'
                   onChange={handleChange}
-                  {...form.getInputProps('item')}
+
                 >
                 </TextInput>
 
                 <TextInput
+                  name='asignee'
                   label='Assigned to:'
                   placeholder='Assignee Name'
                   onChange={handleChange}
-                  {...form.getInputProps('assignee')}>
+                >
                 </TextInput>
 
                 <span>Difficulty</span>
                 <Slider
+                  onChange={handleChange}
                   className={classes.slider}
                   min={0}
                   max={5}

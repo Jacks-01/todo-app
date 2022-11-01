@@ -25,10 +25,10 @@ const List = ({ list, toggleComplete }) => {
                     withBorder
 				>
 					<Card.Section>
-						<Text>Assigned to: {item.assignee}</Text>
+						<Text>To-Do:{item.text}</Text>
 					</Card.Section>
 					<Card.Section>
-						<Text>{item.text}</Text>
+						<Text>Assigned to: {item.assignee}</Text>
 					</Card.Section>
 
 					<Card.Section>
