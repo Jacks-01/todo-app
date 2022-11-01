@@ -1,4 +1,4 @@
-import { Header, createStyles, Center } from '@mantine/core'
+import { Header, createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
 
