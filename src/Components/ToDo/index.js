@@ -1,17 +1,23 @@
 import React, { useEffect, useContext, useState } from 'react';
 import useFormHook from '../../hooks/form';
 import List from '../List/index';
+import { SettingsContext } from '../../Context/Settings';
 
 import { v4 as uuid } from 'uuid';
 
-import { Grid, Button, Container, createStyles, Box, TextInput, Slider } from '@mantine/core';
+import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 
 export const useStyles = createStyles((theme) => ({
 
+  container: {
+    marginTop: '3rem'
+  },
+
   box: {
     padding: '1rem',
+    marginTop: '2rem',
     borderStyle: 'solid',
     borderColor: theme.colors.gray[3],
     borderWidth: '1px',
@@ -22,7 +28,13 @@ export const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.dark[5],
     color: 'whitesmoke',
-    width: '80vw'
+    width: '80vw',
+    height: '3rem',
+    borderRadius: theme.radius.sm,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1rem',
+    size: theme.fontSizes.md,
   },
 
   slider: {
@@ -93,7 +105,7 @@ const ToDo = () => {
     <>
       <Container className={classes.container}>
         <header data-testid="todo-header">
-          <h1 className={classes.header} data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
+          <Text className={classes.header} data-testid="todo-h1">To Do List: {incomplete} items pending</Text>
         </header>
 
 
@@ -102,7 +114,6 @@ const ToDo = () => {
 
 
             <h2>Add To Do Item</h2>
-            {/* <input onChange={handleChange} name="text" type="text" placeholder="Item Details" /> */}
             <TextInput
               label='To Do Item:'
               placeholder='Item Details'
@@ -110,15 +121,12 @@ const ToDo = () => {
             >
             </TextInput>
 
-
-            {/* <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" /> */}
             <TextInput
               label='Assigned to:'
               placeholder='Assignee Name'
               {...form.getInputProps('assignee')}>
             </TextInput>
 
-            {/* <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty"/> */}
             <span>Difficulty</span>
             <Slider
               className={classes.slider}
@@ -132,9 +140,11 @@ const ToDo = () => {
 
         </Box>
 
-        <List/>
+        <Grid>
+          <List list={list} toggleComplete={incomplete} />
+        </Grid>
 
-        
+
       </Container>
     </>
   )

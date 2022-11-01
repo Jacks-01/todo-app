@@ -1,4 +1,4 @@
-import { Pagination } from '@mantine/core';
+import { Pagination, Grid, Card, Text } from '@mantine/core';
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
@@ -16,25 +16,40 @@ const List = ({ list, toggleComplete }) => {
 	const displayList = listToRender.slice(listStart, listEnd);
 	return (
 		<>
-            {displayList.map(item => (
-                <div key={item.id}>
-                    <p>{item.text}</p>
-                    <p>
-                        <small>Assigned to: {item.assignee}</small>
-                    </p>
-                    <p>
-                        <small>Difficulty: {item.difficulty}</small>
-                    </p>
-                    <div onClick={() => toggleComplete(item.id)}>
-                        Complete: {item.complete.toString()}
-                    </div>
-                    <hr />
-                </div>
-            ))}
+			{displayList.map((item) => (
+				<Grid.Col key={item.id}>
+					<Card
+						shadow='sm'
+						p='lg'
+						radius='md'
+						withBorder
+					>
+						<Card.Section>
+							<Text>Assigned to: {item.assignee}</Text>
+						</Card.Section>
+						<Card.Section>
+							<Text>{item.text}</Text>
+						</Card.Section>
 
-            <When condition={listToRender.length > 0}>
-                <Pagination page={page} onChange={setPage} total={pageCount}/>
-            </When>
+						<Card.Section>
+							<Text>Difficulty: {item.difficulty}</Text>
+						</Card.Section>
+
+						<small>Difficulty: {item.difficulty}</small>
+						<div onClick={() => toggleComplete(item.id)}>
+							Complete: {item.complete.toString()}
+						</div>
+					</Card>
+				</Grid.Col>
+			))}
+
+			<When condition={listToRender.length > 0}>
+				<Pagination
+					page={page}
+					onChange={setPage}
+					total={pageCount}
+				/>
+			</When>
 		</>
 	);
 };
