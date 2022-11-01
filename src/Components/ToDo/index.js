@@ -1,29 +1,48 @@
 import React, { useEffect, useContext, useState } from 'react';
-import useForm from '../../hooks/form';
+import useFormHook from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
 
-import { Grid, Button, Container, createStyles } from '@mantine/core';
+import { Grid, Button, Container, createStyles, Box, TextInput, Slider } from '@mantine/core';
+import { useForm } from '@mantine/form';
 
 
 export const useStyles = createStyles((theme) => ({
+
+  box: {
+    padding: '1rem',
+    borderStyle: 'solid',
+    borderColor: theme.colors.gray[3],
+    borderWidth: '1px',
+    borderRadius: theme.radius.sm,
+    maxWidth: 300,
+  },
+
   header: {
     backgroundColor: theme.colors.dark[5],
     color: 'whitesmoke',
     width: '60vw'
+  },
+
+  slider: {
+    padding: '2rem'
+  },
+
+  Button: {
+    margin: 20,
   }
 }));
 
-const ToDo = () => {
 
-  const { classes } = useStyles();
+
+const ToDo = () => {
 
   const [defaultValues] = useState({
     difficulty: 4,
   });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
-  const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
+  const { handleChange, handleSubmit } = useFormHook(addItem, defaultValues);
 
   function addItem(item) {
     item.id = uuid();
@@ -59,6 +78,16 @@ const ToDo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);
 
+  const form = useForm({
+    initialValues: {
+      item: '',
+      assignee: '',
+      slider: 0,
+    }
+  });
+
+  const { classes } = useStyles();
+
   return (
     <>
       <Container className={classes.header}>
@@ -67,29 +96,40 @@ const ToDo = () => {
         </header>
       </Container>
 
-      <form onSubmit={handleSubmit}>
+      <Box className={classes.box}>
+        <form onSubmit={handleSubmit}>
 
-        <h2>Add To Do Item</h2>
 
-        <label>
-          <span>To Do Item</span>
-          <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
-        </label>
+          <h2>Add To Do Item</h2>
+          {/* <input onChange={handleChange} name="text" type="text" placeholder="Item Details" /> */}
+          <TextInput
+            label='To Do Item:'
+            placeholder='Item Details'
+            {...form.getInputProps('item')}
+          >
+          </TextInput>
 
-        <label>
-          <span>Assigned To</span>
-          <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-        </label>
 
-        <label>
+          {/* <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" /> */}
+          <TextInput
+            label='Assigned to:'
+            placeholder='Assignee Name'
+            {...form.getInputProps('assignee')}>
+          </TextInput>
+
+          {/* <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty"/> */}
           <span>Difficulty</span>
-          <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
-        </label>
+          <Slider
+            className={classes.slider}
+            min={0}
+            max={5}
+          />
 
-        <label>
-          <Button type="submit">Add Item</Button>
-        </label>
-      </form>
+          <Button className={classes.Button} type="submit">Add Item</Button>
+
+        </form>
+
+      </Box>
 
       {list.map(item => (
         <div key={item.id}>
@@ -102,7 +142,7 @@ const ToDo = () => {
       ))}
 
     </>
-  );
+  )
 };
 
 export default ToDo;
