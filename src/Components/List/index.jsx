@@ -5,6 +5,7 @@ import {
 	Badge,
 	createStyles,
 	Group,
+	CloseButton,
 } from '@mantine/core';
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
@@ -36,7 +37,7 @@ const List = ({ list, toggleComplete }) => {
 			{displayList.map((item) => (
 				<Card
 					key={item.id}
-					shadow='sm'
+					shadow='md'
 					p='lg'
 					radius='md'
 					withBorder
@@ -51,6 +52,10 @@ const List = ({ list, toggleComplete }) => {
 								{item.complete ? 'complete' : 'pending'}
 							</Badge>
 							<Text>{item.assignee}</Text>
+							<CloseButton
+								title='Delete ToDo Item'
+								// onClick={() => deleteItem(item.id)}
+							></CloseButton>
 						</Group>
 					</Card.Section>
 
