@@ -120,7 +120,7 @@ const ToDo = () => {
                 </TextInput>
 
                 <TextInput
-                  name='asignee'
+                  name='assignee'
                   label='Assigned to:'
                   placeholder='Assignee Name'
                   onChange={handleChange}
