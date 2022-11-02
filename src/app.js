@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { Footer } from '@mantine/core';
 import AppHeader from './Components/Header';
 
 import ToDo from './Components/ToDo';
@@ -15,6 +15,7 @@ const App = () => {
     <>
       <AppHeader />
       <ToDo />;
+      <Footer/>
     </>
   )
 };
