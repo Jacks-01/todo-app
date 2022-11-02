@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-const List = ({ list, toggleComplete }) => {
+const List = ({deleteItem, list, toggleComplete }) => {
 	const { pageItems, showCompleted } = useContext(SettingsContext);
 	const [page, setPage] = useState(1);
 
@@ -54,7 +54,7 @@ const List = ({ list, toggleComplete }) => {
 							<Text>{item.assignee}</Text>
 							<CloseButton
 								title='Delete ToDo Item'
-								// onClick={() => deleteItem(item.id)}
+								onClick={() => deleteItem(item.id)}
 							></CloseButton>
 						</Group>
 					</Card.Section>
