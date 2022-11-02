@@ -1,4 +1,11 @@
-import { Pagination, Card, Text, Badge, createStyles } from '@mantine/core';
+import {
+	Pagination,
+	Card,
+	Text,
+	Badge,
+	createStyles,
+	Group,
+} from '@mantine/core';
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
@@ -35,14 +42,16 @@ const List = ({ list, toggleComplete }) => {
 					withBorder
 				>
 					<Card.Section withBorder>
-						<Badge
-							className={classes.badge}
-							color={item.complete ? 'green' : 'red'}
-							variant='filled'
-						>
-							{item.complete ? 'complete' : 'pending'}
-						</Badge>
-						<Text>{item.assignee}</Text>
+						<Group>
+							<Badge
+								className={classes.badge}
+								color={item.complete ? 'green' : 'red'}
+								variant='filled'
+							>
+								{item.complete ? 'complete' : 'pending'}
+							</Badge>
+							<Text>{item.assignee}</Text>
+						</Group>
 					</Card.Section>
 
 					<Text>{item.text}</Text>
