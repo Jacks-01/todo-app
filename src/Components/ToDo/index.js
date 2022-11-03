@@ -142,7 +142,7 @@ const ToDo = () => {
             </Box>
           </Grid.Col>
           <Grid.Col xs={12} sm={8}>
-            <List deleteItem={deleteItem} list={list} toggleComplete={incomplete} />
+            <List deleteItem={deleteItem} list={list} toggleComplete={toggleComplete} />
           </Grid.Col>
         </Grid>
 

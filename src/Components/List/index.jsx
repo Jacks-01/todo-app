@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-const List = ({deleteItem, list, toggleComplete }) => {
+const List = ({ deleteItem, list, toggleComplete }) => {
 	const { pageItems, showCompleted } = useContext(SettingsContext);
 	const [page, setPage] = useState(1);
 
@@ -48,6 +48,7 @@ const List = ({deleteItem, list, toggleComplete }) => {
 								className={classes.badge}
 								color={item.complete ? 'green' : 'red'}
 								variant='filled'
+								onClick={() => toggleComplete(item.id)}
 							>
 								{item.complete ? 'complete' : 'pending'}
 							</Badge>
@@ -62,10 +63,6 @@ const List = ({deleteItem, list, toggleComplete }) => {
 					<Text>{item.text}</Text>
 
 					<Text>Difficulty: {item.difficulty}</Text>
-
-					<div onClick={() => toggleComplete(item.id)}>
-						Complete: {item.complete.toString()}
-					</div>
 				</Card>
 			))}
 
