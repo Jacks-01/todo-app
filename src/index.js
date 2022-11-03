@@ -10,12 +10,12 @@ import { MantineProvider } from '@mantine/core';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <AuthProvider>
         <SettingsProvider>
           <App />
         </SettingsProvider>
-      </MantineProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </MantineProvider>
   </React.StrictMode>
 );

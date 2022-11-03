@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
 
 	const login = (username, password) => {
 		// for demonstration the user data is hardcoded
+		console.log('yo', username, password);
 		let authCredentials = testUsers[username];
 
 		if (authCredentials && authCredentials.password === password) {

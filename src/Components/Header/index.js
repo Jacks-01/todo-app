@@ -1,4 +1,4 @@
-import { Header, createStyles, Container } from '@mantine/core'
+import { Header, createStyles } from '@mantine/core'
 import Login from '../Login'
 
 export const useStyles = createStyles((theme) => ({

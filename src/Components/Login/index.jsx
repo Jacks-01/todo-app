@@ -31,11 +31,11 @@ const Login = () => {
 
 	return (
 		<form
-        onSubmit={form.onSubmit((values) => {
-            setUsername(values);
-            setPassword(values);
-            console.log(values);
-        })}
+			onSubmit={form.onSubmit((values) => {
+				setUsername(values);
+				setPassword(values);
+				console.log(values);
+			})}
 			className={classes.form}
 		>
 			<TextInput
@@ -53,9 +53,7 @@ const Login = () => {
 			<Button
 				color='red'
 				type='submit'
-				onClick={() => {
-					login(username, password);
-				}}
+				onClick={() => login(username, password)}
 			>
 				Login
 			</Button>
@@ -64,5 +62,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
