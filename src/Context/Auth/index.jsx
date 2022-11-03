@@ -73,20 +73,25 @@ const AuthProvider = ({ children }) => {
 		setIsLoggedIn(false);
 		setError(null);
 		cookie.remove('auth');
-
-		let values = {
-			isLoggedIn,
-			user,
-			error,
-			can,
-			login,
-			logout,
-		};
-        
-		return (
-			<AuthContext.Provider value={values}>{children}</AuthContext.Provider>
-		);
 	};
+
+	useEffect(() => {
+		let token = cookie.load('auth');
+		if (token) {
+			_validateToken(token);
+		}
+	}, []);
+
+	let values = {
+		isLoggedIn,
+		user,
+		error,
+		can,
+		login,
+		logout,
+	};
+
+	return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
