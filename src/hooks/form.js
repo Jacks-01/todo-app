@@ -4,15 +4,14 @@ const useForm = (callback, defaultValues={}) => {
 
   const [values, setValues] = useState({});
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    callback(values);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    callback({...values});
   };
 
   const handleChange = (event) => {
     let name, value;
     if (typeof (event) === 'object') {
-      event.persist();
       name = event.target.name;
       value = event.target.value;
     } else {
