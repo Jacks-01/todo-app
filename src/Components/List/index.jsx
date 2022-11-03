@@ -10,6 +10,7 @@ import {
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
+import Auth from '../Auth'
 
 const useStyles = createStyles((theme) => ({
 	badge: {
@@ -53,10 +54,12 @@ const List = ({ deleteItem, list, toggleComplete }) => {
 								{item.complete ? 'complete' : 'pending'}
 							</Badge>
 							<Text>{item.assignee}</Text>
-							<CloseButton
-								title='Delete ToDo Item'
-								onClick={() => deleteItem(item.id)}
-							></CloseButton>
+							<Auth capability='delete'>
+								<CloseButton
+									title='Delete ToDo Item'
+									onClick={() => deleteItem(item.id)}
+								></CloseButton>
+							</Auth>
 						</Group>
 					</Card.Section>
 

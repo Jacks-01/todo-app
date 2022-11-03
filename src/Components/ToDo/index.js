@@ -5,7 +5,6 @@ import List from '../List/index';
 import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
-import Auth from '../Auth';
 
 export const useStyles = createStyles((theme) => ({
 
@@ -148,20 +147,6 @@ const ToDo = () => {
         </Grid>
 
       </Container>
-
-
-      <Auth capability='read'>
-        <p>Can Read</p>
-      </Auth>
-      <Auth capability='create'>
-        <p>Can Create</p>
-      </Auth>
-      <Auth capability='update'>
-        <p>Can update</p>
-      </Auth>
-      <Auth capability='delete'>
-        <p>Can Delete</p>
-      </Auth>
     </>
   )
 };
