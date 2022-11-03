@@ -31,11 +31,7 @@ const Login = () => {
 
 	return (
 		<form
-			onSubmit={form.onSubmit((values) => {
-				setUsername(values);
-				setPassword(values);
-				console.log(values);
-			})}
+			onSubmit={form.onSubmit((values) => login(username, password))}
 			className={classes.form}
 		>
 			<TextInput
@@ -53,7 +49,10 @@ const Login = () => {
 			<Button
 				color='red'
 				type='submit'
-				onClick={() => login(username, password)}
+				onClick={() => {
+					setUsername(form.values.username);
+					setPassword(form.values.password);
+				}}
 			>
 				Login
 			</Button>

@@ -46,6 +46,7 @@ const AuthProvider = ({ children }) => {
 		if (authCredentials && authCredentials.password === password) {
 			try {
 				//validate the token
+				console.log('validatiing the token...');
 				_validateToken(authCredentials.token);
 			} catch (e) {
 				console.error(e);
