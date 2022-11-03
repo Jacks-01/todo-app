@@ -11,15 +11,6 @@ export const useStyles = createStyles((theme) => ({
         alignItems: 'center',
         padding: '2em',
 
-        form: {
-            display: 'flex',
-            marginLeft: 'auto',
-            width: '600px',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-
-        }
-
     }
 }))
 
