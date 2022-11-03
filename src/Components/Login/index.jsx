@@ -1,7 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
 import { useForm } from '@mantine/form';
-import { Box, TextInput } from '@mantine/core';
+import { Box, Button, TextInput, createStyles  } from '@mantine/core';
+
+export const useStyles = createStyles(() => ({
+
+    // form: {
+    //     display: 'flex',
+    //     justifyContent: 'flex-end',
+    //     marginLeft: '25rem'
+    // }
+}))
 
 const Login = () => {
 	const [username, setUsername] = useState('');
@@ -15,30 +24,31 @@ const Login = () => {
 			username: '',
 			password: '',
 		},
-	});
+    });
+    
+    const { classes } = useStyles();
 
 	return (
-		<Box sx={{maxWidth: 300, position: 'right'}}>
 			<form
 				onSubmit={form.onSubmit((values) => {
 					console.log(values);
-				})}
+                })}
+                className={classes.form}
 			>
 				<TextInput
 					withAsterisk
-					label='username'
 					placeholder='username'
 					{...form.getInputProps('username')}
 				/>
 
 				<TextInput
 					withAsterisk
-					label='password'
                     placeholder='password'
                     {...form.getInputProps('password')}
-				/>
+                />
+                
+                <Button color='red' type='submit' onClick={() => {login(username, password)}}>Login</Button>
 			</form>
-		</Box>
 	);
 };
 
