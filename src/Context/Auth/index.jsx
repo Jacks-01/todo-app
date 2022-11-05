@@ -71,6 +71,7 @@ const AuthProvider = ({ children }) => {
 	}
 
 	const logout = () => {
+		console.log('logging out')
 		setUser({});
 		setIsLoggedIn(false);
 		setError(null);

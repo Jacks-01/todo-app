@@ -10,7 +10,7 @@ import {
 import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
-import Auth from '../Auth'
+import Auth from '../Auth';
 
 const useStyles = createStyles((theme) => ({
 	badge: {
@@ -65,7 +65,9 @@ const List = ({ deleteItem, list, toggleComplete }) => {
 
 					<Text>{item.text}</Text>
 
-					<Text>Difficulty: {item.difficulty}</Text>
+					<Group align='right'>
+						<Text>Difficulty: {item.difficulty}</Text>
+					</Group>
 				</Card>
 			))}
 

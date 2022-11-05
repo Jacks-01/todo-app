@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../Context/Auth';
 import { useForm } from '@mantine/form';
 import { Button, TextInput, createStyles } from '@mantine/core';
+import { If, Else, Then } from 'react-if';
 
 export const useStyles = createStyles(() => ({
 	form: {
@@ -45,17 +46,29 @@ const Login = () => {
 				placeholder='password'
 				{...form.getInputProps('password')}
 			/>
-
-			<Button
-				color={isLoggedIn ? 'red' : 'green'}
-				type='submit'
-				onClick={() => {
-					setUsername(form.values.username);
-					setPassword(form.values.password);
-				}}
-			>
-				{isLoggedIn ? 'Log out' : 'Log in'}
-			</Button>
+			
+			<If condition={isLoggedIn}>
+				<Then>
+					<Button
+						color='red'
+						onClick={() => logout()}
+					>
+						Log out
+					</Button>
+				</Then>
+				<Else>
+					<Button
+						color='green'
+						type='submit'
+						onClick={() => {
+							setUsername(form.values.username);
+							setPassword(form.values.password);
+						}}
+					>
+						Log In
+					</Button>
+				</Else>
+			</If>
 		</form>
 	);
 };
