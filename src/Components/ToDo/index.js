@@ -5,6 +5,7 @@ import List from '../List/index';
 import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
+import Auth from '../Auth';
 
 export const useStyles = createStyles((theme) => ({
 
@@ -134,8 +135,9 @@ const ToDo = () => {
                   min={0}
                   max={5}
                 />
-
-                <Button className={classes.Button} type="submit">Add Item</Button>
+                <Auth capability='create'>
+                  <Button className={classes.Button} type="submit">Add Item</Button>
+                </Auth>
 
               </form>
 
