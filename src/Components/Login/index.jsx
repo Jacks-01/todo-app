@@ -47,14 +47,14 @@ const Login = () => {
 			/>
 
 			<Button
-				color='red'
+				color={isLoggedIn ? 'red' : 'green'}
 				type='submit'
 				onClick={() => {
 					setUsername(form.values.username);
 					setPassword(form.values.password);
 				}}
 			>
-				Login
+				{isLoggedIn ? 'Log out' : 'Log in'}
 			</Button>
 		</form>
 	);
