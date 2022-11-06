@@ -1,4 +1,5 @@
 import { Header, createStyles } from '@mantine/core'
+import Login from '../Login'
 
 export const useStyles = createStyles((theme) => ({
 
@@ -17,7 +18,9 @@ const AppHeader = () => {
     const { classes } = useStyles();
     return (
         <>
-            <Header className={classes.header}>Home</Header>
+            <Header className={classes.header}> Home
+                    <Login />
+            </Header>
         </>
     );
 }
