@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import useForm from '../../hooks/form';
-import List from '../List/index';
+import List from '../../Components/List';
 
 import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
-import Auth from '../Auth';
+import Auth from '../../Components/Auth';
 
 export const useStyles = createStyles((theme) => ({
 

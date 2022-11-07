@@ -1,7 +1,7 @@
 import { Footer } from '@mantine/core';
 import AppHeader from './Components/Header';
 
-import ToDo from './Components/ToDo';
+import ToDo from './routes/ToDo';
 
 
 const App = () => {
