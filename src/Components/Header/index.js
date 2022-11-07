@@ -18,7 +18,9 @@ export const useStyles = createStyles((theme) => ({
         display: 'flex',
         width: '10rem',
         justifyContent: 'space-evenly',
-    }
+},
+
+
 
     
 }))
@@ -29,8 +31,8 @@ const AppHeader = () => {
         <>
             <Header className={classes.header}>
                 <nav className={classes.link}>
-                <Link to={'/'}>Home</Link>
-                <Link to={'settings'}> Settings </Link>
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to={'/'}>Home</Link>
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to={'settings'}> Settings </Link>
                 </nav>
                 <Login />
             </Header>
