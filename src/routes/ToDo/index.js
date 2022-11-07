@@ -60,11 +60,20 @@ const ToDo = () => {
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
-  function addItem(item) {
+  async function addItem(item) {
     item.id = uuid();
     item.complete = false;
     console.log(item);
     setList([...list, item]);
+
+    let request = await axios.post('https://api-js401.herokuapp.com/api/v1/todo',
+      {
+        name: item.name,
+        text: item.text,
+        difficulty: item.difficulty,
+        id: item.id
+    })
+    
   }
 
   function deleteItem(id) {
@@ -101,7 +110,7 @@ const ToDo = () => {
     // linter will want 'incomplete' added to dependency array unnecessarily. 
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
-  }, [list]);
+  }, []);
 
 
 
