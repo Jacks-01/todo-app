@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
 import Auth from '../../Components/Auth';
+import axios from 'axios';
 
 export const useStyles = createStyles((theme) => ({
 
@@ -85,6 +86,15 @@ const ToDo = () => {
   }
 
   useEffect(() => {
+    (async () => {
+      let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
+      let results = response.data.results;
+      console.log(results);
+      setList(results)
+    })();
+
+
+
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;

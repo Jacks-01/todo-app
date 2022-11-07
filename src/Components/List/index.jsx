@@ -11,6 +11,7 @@ import { useContext, useState } from 'react';
 import { When } from 'react-if';
 import { SettingsContext } from '../../Context/Settings/index';
 import Auth from '../Auth';
+import axios from 'axios';
 
 const useStyles = createStyles((theme) => ({
 	badge: {
