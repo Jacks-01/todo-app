@@ -17,7 +17,7 @@ import { IconSettings } from '@tabler/icons';
 
 export const useStyles = createStyles((theme) => ({
 	container: {
-		width: '80vw',
+		width: '60vw',
 		marginTop: '3rem',
 	},
 	header: {
@@ -37,16 +37,20 @@ export const useStyles = createStyles((theme) => ({
 		borderColor: theme.colors.gray[3],
 		borderWidth: '1px',
 		borderRadius: theme.radius.sm,
-		maxWidth: 300,
+		maxWidth: 500,
 	},
 
 	grid: {
 		width: 'auto',
 		paddingTop: '2rem',
 	},
+
+	form: {
+		margin: 'auto',
+		}
 }));
 
-const Settings = ({}) => {
+const Settings = () => {
 	const {
 		showCompleted,
 		pageItems,
@@ -81,8 +85,8 @@ const Settings = ({}) => {
 						xs={12}
 						sm={4}
 					>
-						<Box className={classes.box}>
-							<form onSubmit={form.onSubmit((values) => console.log(values))}>
+						<Box className={classes.box} sx={{display: 'flex', alignContent: 'space-around'}}>
+							<form className={classes.form} onSubmit={form.onSubmit((values) => console.log(values))}>
 								<Switch
 									label='Show Completed ToDos'
 									checked={checked}
@@ -109,6 +113,8 @@ const Settings = ({}) => {
 										setSort(form.values.sort);
 										setShowCompleted(checked);
 									}}
+
+									sx={{marginTop: '20px', marginLeft: '25px'}}
 								>
 									Show New Settings
 								</Button>
