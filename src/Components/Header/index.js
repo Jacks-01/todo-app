@@ -29,7 +29,7 @@ const AppHeader = () => {
         <>
             <Header className={classes.header}>
                 <nav className={classes.link}>
-                <Link to={''}>Home</Link>
+                <Link to={'/'}>Home</Link>
                 <Link to={'settings'}> Settings </Link>
                 </nav>
                 <Login />
