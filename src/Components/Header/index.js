@@ -1,4 +1,5 @@
 import { Header, createStyles } from '@mantine/core'
+import { Link } from 'react-router-dom';
 import Login from '../Login'
 
 export const useStyles = createStyles((theme) => ({
@@ -9,17 +10,31 @@ export const useStyles = createStyles((theme) => ({
         height: '4rem',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between',
         padding: '2em',
+    },
 
-    }
+    link: {
+        display: 'flex',
+        width: '10rem',
+        justifyContent: 'space-evenly',
+},
+
+
+
+    
 }))
 
 const AppHeader = () => {
     const { classes } = useStyles();
     return (
         <>
-            <Header className={classes.header}> Home
-                    <Login />
+            <Header className={classes.header}>
+                <nav className={classes.link}>
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to={'/'}>Home</Link>
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to={'settings'}> Settings </Link>
+                </nav>
+                <Login />
             </Header>
         </>
     );
