@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 			},
 		};
 
-		let response = axios.await(config);
+		let response = await axios(config);
 
 		let { token } = response.data;
 
