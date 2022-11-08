@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 
 import { Grid, Button, Container, createStyles, Box, TextInput, Slider, Text } from '@mantine/core';
 import Auth from '../../Components/Auth';
+import axios from 'axios';
 
 export const useStyles = createStyles((theme) => ({
 
@@ -59,22 +60,37 @@ const ToDo = () => {
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
-  function addItem(item) {
+  async function addItem(item) {
     item.id = uuid();
     item.complete = false;
     console.log(item);
     setList([...list, item]);
+
+    let request = await axios.post('https://api-js401.herokuapp.com/api/v1/todo',
+      {
+        name: item.name,
+        text: item.text,
+        difficulty: item.difficulty,
+        id: item.id
+    })
+    
   }
 
-  function deleteItem(id) {
-    const items = list.filter(item => item.id !== id);
-    setList(items);
+  async function deleteItem(id) {
+    let response = await axios.delete('https://api-js401.herokuapp.com/api/v1/todo', {
+      _id: id
+    });
+
+    let request = response.data;
+    console.log(request);
+    
   }
 
   function toggleComplete(id) {
 
     const items = list.map(item => {
-      if (item.id === id) {
+      console.log(item)
+      if (item._id === id) {
         item.complete = !item.complete;
       }
       return item;
@@ -85,13 +101,22 @@ const ToDo = () => {
   }
 
   useEffect(() => {
+    (async () => {
+      let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
+      let results = response.data.results;
+      console.log(results);
+      setList(results)
+    })();
+
+
+
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;
     // linter will want 'incomplete' added to dependency array unnecessarily. 
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
-  }, [list]);
+  }, []);
 
 
 
