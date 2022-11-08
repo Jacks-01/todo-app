@@ -51,7 +51,7 @@ const List = ({ deleteItem, list, toggleComplete }) => {
 									className={classes.badge}
 									color={item.complete ? 'green' : 'red'}
 									variant='filled'
-									onClick={() => toggleComplete(item.id)}
+									onClick={() => toggleComplete(item._id) }
 								>
 									{item.complete ? 'complete' : 'pending'}
 								</Badge>
@@ -59,7 +59,7 @@ const List = ({ deleteItem, list, toggleComplete }) => {
 								<Auth capability='delete'>
 									<CloseButton
 										title='Delete ToDo Item'
-										onClick={() => deleteItem(item.id)}
+										onClick={() => deleteItem(item._id)}
 									></CloseButton>
 								</Auth>
 							</Group>

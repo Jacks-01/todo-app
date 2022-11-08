@@ -76,15 +76,21 @@ const ToDo = () => {
     
   }
 
-  function deleteItem(id) {
-    const items = list.filter(item => item.id !== id);
-    setList(items);
+  async function deleteItem(id) {
+    let response = await axios.delete('https://api-js401.herokuapp.com/api/v1/todo', {
+      _id: id
+    });
+
+    let request = response.data;
+    console.log(request);
+    
   }
 
   function toggleComplete(id) {
 
     const items = list.map(item => {
-      if (item.id === id) {
+      console.log(item)
+      if (item._id === id) {
         item.complete = !item.complete;
       }
       return item;
